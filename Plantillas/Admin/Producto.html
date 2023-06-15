@@ -1,0 +1,67 @@
+
+<div class="row justify-content-center  mt-3">
+    <p class="col-sm-12 col-md-8 col-xl-10 h4 mt-2">@titulo</p>
+</div>
+<div class="row justify-content-center  mt-3">
+    <div class="col-sm-12 col-md-8 col-xl-10">
+
+        <EditForm Model="modelo" OnValidSubmit="GuardarCambios">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div class="input-group">
+                <span class="input-group-text bg-light" id="basic-addon3">Nombre</span>
+                <input type="text" class="form-control" @bind-value="modelo.Nombre">
+            </div>
+            <ValidationMessage For="@(()=>modelo.Nombre)" />
+
+            <div class="input-group  mt-3">
+                <span class="input-group-text bg-light">Descripcion</span>
+                <textarea class="form-control" @bind="modelo.Descripcion"></textarea>
+                
+            </div>
+            <ValidationMessage For="@(()=>modelo.Descripcion)" />
+
+            <div class="input-group mt-3">
+                <label class="input-group-text bg-light" for="inputGroupSelect01">Categoria</label>
+                <select class="form-select" value="@modelo.IdCategoria" @onchange="CambiarCategoria">
+                    @foreach(var item in listaCategoria)
+                    {
+                        <option value="@item.IdCategoria">@item.Nombre</option>
+                    }
+                </select>
+            </div>
+
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-light" id="basic-addon3">Precio</span>
+                <input type="number" class="form-control" @bind-value="modelo.Precio" >
+            </div>
+            <ValidationMessage For="@(()=>modelo.Precio)" />
+
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-light" id="basic-addon3">Precio Oferta</span>
+                <input type="number" class="form-control" @bind-value="modelo.PrecioOferta">
+            </div>
+            <ValidationMessage For="@(()=>modelo.PrecioOferta)" />
+
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-light" id="basic-addon3">Cantidad</span>
+                <input type="number" class="form-control" @bind-value="modelo.Cantidad">
+            </div>
+            <ValidationMessage For="@(()=>modelo.Cantidad)" />
+
+            <div class="input-group mt-3">
+                <label class="input-group-text bg-light">Imagen</label>
+                <InputFile type="file" class="form-control" accept="image/png, image/gif, image/jpeg" OnChange="OnFileChange"></InputFile>
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary" style="width:130px">@boton</button>
+                <a href="/productos" class="btn btn-secondary" style="width:130px">Volver</a>
+            </div>
+        </EditForm>
+
+
+        
+
+    </div>
+    
+</div>

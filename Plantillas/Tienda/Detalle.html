@@ -1,0 +1,43 @@
+<div class="container px-4 px-lg-5 my-5">
+
+
+    @if (modelo != null)
+    {
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6">
+                <img class="card-img-top border-dark border-1" src="@modelo.Imagen" style="width:100%;">
+            </div>
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bolder">@modelo.Nombre</h1>
+                <div class="fs-5 mb-5">
+
+                        <span class="text-danger text-decoration-line-through">S/. @modelo.Precio</span>
+                        <span>S /.@modelo.PrecioOferta</span>
+     
+                        <span>S /.@modelo.Precio</span>
+                </div>
+                <p class="lead">@modelo.Descripcion</p>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" type="number" min="1" style="width:60px" @bind-value="cantidad">
+                    <button class="btn btn-outline-dark flex-shrink-0 me-3" type="button" @onclick="(async() => await AgregarCarrito(modelo))">
+                        <i class="bi-cart-fill me-1"></i>
+                        Agregar al carrito
+                    </button>
+                    <a class="btn btn-outline-dark flex-shrink-0" href="/catalogo">
+                        <i class="bi-cart-fill me-1"></i>
+                        Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    }
+
+
+
+</div>

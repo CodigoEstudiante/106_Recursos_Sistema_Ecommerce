@@ -1,0 +1,42 @@
+<div class="row justify-content-center  mt-3">
+    <p class="col-sm-12 col-md-8 col-xl-10 h4 mt-2">@titulo</p>
+</div>
+<div class="row justify-content-center  mt-3">
+    <div class="col-sm-12 col-md-8 col-xl-10">
+        <EditForm Model="modelo" OnValidSubmit="GuardarCambios">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+
+            <div class="input-group">
+                <span class="input-group-text bg-light" id="basic-addon3">Nombre Completo</span>
+                <input type="text" class="form-control" @bind-value="modelo.NombreCompleto">
+            </div>
+            <ValidationMessage For="@(()=>modelo.NombreCompleto)" />
+
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-light" id="basic-addon3">Correo</span>
+                <input type="text" class="form-control" @bind-value="modelo.Correo"><br />
+            </div>
+            <ValidationMessage For="@(()=>modelo.Correo)" />
+
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-light" id="basic-addon3">Contraseña</span>
+                <input type="password" class="form-control" @bind-value="modelo.Clave">
+            </div>
+            <ValidationMessage For="@(()=>modelo.Clave)" />
+
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-light" id="basic-addon3">Confirmar Contraseña</span>
+                <input type="password" class="form-control" @bind-value="modelo.ConfirmarClave">
+            </div>
+            <ValidationMessage For="@(()=>modelo.ConfirmarClave)" />
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary" style="width:130px">@boton</button>
+                <a href="/usuarios" class="btn btn-secondary" style="width:130px">Volver</a>
+            </div>
+        </EditForm>
+       
+
+    </div>
+
+</div>
